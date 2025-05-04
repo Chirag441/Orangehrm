@@ -32,13 +32,13 @@ The framework automates core user management functionalities of OrangeHRM. It in
 
 ## 📁 Project Structure
 
-src/test/java
-├── Featurefile # Contains all .feature files (Gherkin syntax)
-├── PageObjects # Page Object Model classes for web elements and actions
-├── resource # Excel test data file and properties file
-├── runner # TestRunner class to execute scenarios
-├── StepDefination # Step definitions for feature files + Hooks class for setup/teardown
-└── Utils # Utilities like Excel Reader, Config Loader, General utility ( explicit wait ,scrolling )  etc.
+src/test/java<br>
+├── Featurefile # Contains all .feature files (Gherkin syntax)<br>
+├── PageObjects # Page Object Model classes for web elements and actions<br>
+├── resource # Excel test data file and properties file<br>
+├── runner # TestRunner class to execute scenarios<br>
+├── StepDefination # Step definitions for feature files + Hooks class for setup/teardown<br>
+└── Utils # Utilities like Excel Reader, Config Loader, General utility ( explicit wait ,scrolling )  etc.<br>
 
 
 
