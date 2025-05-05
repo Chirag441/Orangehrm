@@ -48,7 +48,6 @@ src/test/java<br>
 
 - `properties` file is used to manage:
   - Application URL (global.properties)
-  - user detail (external.properties)
 - `Excel` file contains dynamic user data used during user creation 
 
 ---
