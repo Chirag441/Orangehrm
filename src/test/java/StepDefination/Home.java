@@ -34,11 +34,11 @@ public class Home {
         gernal.SideMenu(tab);
     }
 
-   @And("goto Employee section")
-    public void switchToEmployeSection()
-   {
-       gernal.topMenu("Add Employee");
-   }
+//   @And("goto Employee section")
+//    public void switchToEmployeSection()
+//   {
+//       gernal.topMenu("Add Employee");
+//   }
 
 
 }

@@ -37,7 +37,9 @@ public class Objectfile {
 
     public EmployeeListPage  getEmployeeListPage()
     {
-        employeeListPage = new EmployeeListPage(driver);
+        if(employeeListPage == null) {
+            employeeListPage = new EmployeeListPage(driver);
+        }
         return employeeListPage;
     }
 

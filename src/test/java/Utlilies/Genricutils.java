@@ -1,5 +1,6 @@
 package Utlilies;
 
+import PageObjects.Objectfile;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -14,24 +15,44 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 public class Genricutils
 {
 WebDriver driver;
-String excelfilelloacation="//src//test//java//resource//EmployeeDetails.xlsx";
+    Properties prop;
+    String excelfilelloacation="//src//test//java//resource//EmployeeDetails.xlsx";
+    String propertyfilelocation="//src//test//java//resource//external.properties";
     By menueButton = By.xpath("//button[@class=\"oxd-icon-button oxd-main-menu-button\"]");
- //   String tab  = "//a[text()='";//Add Employee']");
+
      By menuelist = By.xpath("//a[@class='oxd-main-menu-item']");
    XSSFWorkbook workbook ;
     public   XSSFSheet sheet;
     JavascriptExecutor js ;//(JavascriptExecutor)  driver;
     WebDriverWait wait ;
 
-public Genricutils(WebDriver driver)
+    public  Objectfile objectfile;
+    public  int employeeid;
+    public String employeeusermane;
+    public String employeepassword;
+
+    public  void switchFromTopMenue(String name)
+    //switchToEmployeeSection
+    {
+        topMenu(name);
+    }
+
+
+
+
+
+
+public Genricutils(WebDriver driver  , Objectfile objectfile)
 {
     this.driver=driver;
+    this.objectfile =objectfile;
     js=(JavascriptExecutor)  driver;
-    wait = new WebDriverWait(driver, Duration.ofSeconds(5000));
+    wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
 }
 
@@ -72,12 +93,19 @@ public void topMenu(String tab)
 
 public void loadExcelFile()
 {
-    FileInputStream fis=null;
+    FileInputStream fis = null ;
     try {
         fis= new FileInputStream(System.getProperty("user.dir")+excelfilelloacation);
+      //  loadPropertyFile();
+
     } catch (FileNotFoundException e) {
         System.out.println("Enable to load ExcelFile");
     }
+//    catch (IOException e) {
+//        System.out.println("Enable to load Property File");
+//    }
+
+
     try {
         workbook =new XSSFWorkbook(fis);
     } catch (IOException e) {
@@ -92,9 +120,24 @@ public  void scroll(WebElement element)
 }
 
 
-public void waitForElementVisibility(By xpath)
+public void loadPropertyFile() throws IOException
 {
-    wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
+
+    FileInputStream propertyfile = null;
+
+        propertyfile = new FileInputStream(System.getProperty("user.dir")+propertyfilelocation);
+        prop = new Properties();
+        prop.load(propertyfile);
+
+}
+public boolean waitForElementVisibility(By xpath)
+{
+    try {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(xpath));
+        return true;
+    } catch (Exception e) {
+        return false;
+    }
 }
 
 }

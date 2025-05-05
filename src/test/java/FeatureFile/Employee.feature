@@ -5,7 +5,7 @@ Feature:  Create a new user
     Given User Is on login Page
     When  login to Home page
     Then  Switch to "PIM" tab
-    And goto Employee section
+   # And goto Employee section
     And add the Employe
     And Verify the employee
     And Delete the Employee
@@ -17,7 +17,7 @@ Feature:  Create a new user
     Given User Is on login Page
     When  login to Home page
     Then  Switch to "PIM" tab
-    And goto Employee section
+    #And goto Employee section
     And add the Employe
     And Verify the employee
     And Logout the user

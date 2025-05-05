@@ -1,5 +1,6 @@
 package PageObjects;
 
+import Utlilies.Genricutils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -12,12 +13,18 @@ public class LoginPage {
    By usernamefeild = By.xpath("//input[@name=\"username\"]");
    By passwordfeild = By.xpath("//input[@name=\"password\"]");
    By loginbutton = By.xpath("//button[text()=' Login ']");
-   String username ="Rajkumar";
-   String password="Chirag#123";
    By userprofilename = By.xpath("//span[@class=\"oxd-userdropdown-tab\"]/p");
    String userprofile = "Raj rai";
+   Genricutils genricutils;
    public LoginPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+
+    public  void setGenricutils(Genricutils genricutils)
+    {
+        this.genricutils =genricutils;
+
     }
 public String getUserName()
 {
@@ -42,8 +49,8 @@ public void loginAsAdmin(String username , String password)
 
 public void loginAsUser()
 {
-    driver.findElement(usernamefeild).sendKeys(username);
-    driver.findElement(passwordfeild).sendKeys(password);
+    driver.findElement(usernamefeild).sendKeys(genricutils.employeeusermane);
+    driver.findElement(passwordfeild).sendKeys(genricutils.employeepassword);
     driver.findElement(loginbutton).click();
     verifyUser(userprofile);
 }

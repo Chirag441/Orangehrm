@@ -2,6 +2,7 @@ package StepDefination;
 
 import PageObjects.EmployeeListPage;
 import Utlilies.Basecontext;
+import Utlilies.Genricutils;
 import io.cucumber.java.en.And;
 import org.testng.Assert;
 
@@ -9,7 +10,8 @@ public class EmployeeList {
     Basecontext base;
     EmployeeListPage employeeListPage;
     boolean status;
-    String id = "1012";
+    int id = 1012;
+    Genricutils genricutils;
 
     public EmployeeList(Basecontext base) {
         this.base = base;
@@ -20,7 +22,6 @@ public class EmployeeList {
     @And("Verify the employee")
     public void verifyTheEmployee()
     {
-     employeeListPage.switchSection();
      Assert.assertTrue(employeeListPage.searchEmployee(id));
 
     }

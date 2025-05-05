@@ -14,7 +14,7 @@ public class Basecontext {
     {
         loaddriver = new Loaddriver();
         objectfile = new Objectfile(loaddriver.getDriver());
-        genric = new Genricutils(loaddriver.driver);
+        genric = new Genricutils(loaddriver.driver , objectfile);
     }
 
     public void quit()

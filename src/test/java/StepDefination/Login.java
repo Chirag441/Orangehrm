@@ -2,6 +2,7 @@ package StepDefination;
 
 import PageObjects.LoginPage;
 import Utlilies.Basecontext;
+import Utlilies.Genricutils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -13,12 +14,14 @@ public class Login {
     public Login (Basecontext base)
     {
         this.base=base;
+       // loginPage.setGenricutils(base.genric);
     }
 
     @Given ("User Is on login Page")
     public  void User_is_on_Login_Page()
     {
        loginPage=base.objectfile.getLoginPage();
+        loginPage.setGenricutils(base.genric);
     }
   @When("login to Home page")
     public void  Login_to_home_page()
