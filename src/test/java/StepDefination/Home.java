@@ -14,18 +14,17 @@ public class Home {
     public Home(Basecontext base) {
         this.base = base;
         homepage = base.objectfile.getHomePage();
-        gernal=base.genric;
+        gernal = base.genric;
     }
-        @Then("Page Verification")
-       public  void verify()
-        {
-              homepage.Verify();
-        }
 
-     @And("Logout the user")
-    public void logOutTheUser()
-    {
-     homepage.LogOut();
+    @Then("Page Verification")
+    public void verify() {
+        homepage.Verify();
+    }
+
+    @And("Logout the user")
+    public void logOutTheUser() {
+        homepage.LogOut();
 
     }
 
@@ -33,12 +32,6 @@ public class Home {
     public void switchToMenu(String tab) {
         gernal.SideMenu(tab);
     }
-
-//   @And("goto Employee section")
-//    public void switchToEmployeSection()
-//   {
-//       gernal.topMenu("Add Employee");
-//   }
 
 
 }
