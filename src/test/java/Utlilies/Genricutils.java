@@ -1,15 +1,15 @@
 package Utlilies;
 
 import PageObjects.Objectfile;
+import io.cucumber.java.Scenario;
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,8 +18,7 @@ import java.util.Properties;
 
 public class Genricutils {
     WebDriver driver;
-    Properties prop;
-    String excelfilelloacation = "//src//test//resources//EmployeeDetails.xlsx";
+        String excelfilelloacation = "//src//test//resources//EmployeeDetails.xlsx";
     By menueButton = By.xpath("//button[@class=\"oxd-icon-button oxd-main-menu-button\"]");
 
     By menuelist = By.xpath("//a[@class='oxd-main-menu-item']");
@@ -112,5 +111,20 @@ public class Genricutils {
             return false;
         }
     }
+
+
+    public byte[] getScreenshot()
+    {
+      File srcshot  =   ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        byte [] screenshot = new byte[0];
+        try {
+            screenshot =FileUtils.readFileToByteArray(srcshot);
+        } catch (IOException e) {
+            System.out.println("Unable to take screenshot");
+        }
+        return screenshot;
+    }
+
+
 
 }

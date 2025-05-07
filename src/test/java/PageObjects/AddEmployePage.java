@@ -38,10 +38,8 @@ public class AddEmployePage {
         String value, xpath;
         genricutils.switchFromTopMenue("Add Employee");
 
-        WebElement ele = driver.findElement(toggelbutton);
-
         if (!genricutils.elementStatus(statuselement)) {
-            ele.click();
+            driver.findElement(toggelbutton).click();
         }
 
 
@@ -69,33 +67,44 @@ public class AddEmployePage {
 
 
         }
-        ele = driver.findElement(savebutton);
-        genricutils.scroll(ele);
+
 
         if (genricutils.elementStatus(alreadyexistserrormessage)) {
-
-            String errormessage = driver.findElement(alreadyexistserrormessage).getText();
-
-            if (errormessage.contains("Employee Id")) {
-                employeeListPage.setGenricutils(genricutils);
-                Assert.assertTrue(employeeListPage.searchEmployee(genricutils.employeeid));
-                employeeListPage.deleteEmployee();
-                Assert.assertFalse(employeeListPage.searchEmployee(genricutils.employeeid));
-                createEmployee();
-            }
-            if (errormessage.contains("Username")) {
-                username = username + genricutils.employeeid;
-                xpath = employeefeild + "6]";
-                driver.findElement(By.xpath(xpath)).sendKeys(Keys.CONTROL, "a");
-                driver.findElement(By.xpath(xpath)).sendKeys(Keys.BACK_SPACE);
-                driver.findElement(By.xpath(xpath)).sendKeys(username);
-
-            }
-
+            errorCreateemployee();
+           createEmployee();
         }
-        driver.findElement(savebutton).click();
-        genricutils.employeeusermane = username;
-        genricutils.waitForElementVisibility(personaldetails);
+        else
+        {
+            // ele = driver.findElement(savebutton);
+            genricutils.scroll(driver.findElement(savebutton));
+            driver.findElement(savebutton).click();
+            genricutils.employeeusermane = username;
+            genricutils.waitForElementVisibility(personaldetails);
+        }
     }
 
+
+    void errorCreateemployee()
+    {
+        String errormessage = driver.findElement(alreadyexistserrormessage).getText();
+
+        if (errormessage.contains("Employee Id")) {
+
+            employeeListPage.setGenricutils(genricutils);
+            Assert.assertTrue(employeeListPage.searchEmployee(genricutils.employeeid));
+            employeeListPage.deleteEmployee();
+            Assert.assertFalse(employeeListPage.searchEmployee(genricutils.employeeid));
+
+        }
+        if (errormessage.contains("Username")) {
+            username = username + genricutils.employeeid;
+            String xpath = employeefeild + "6]";
+            driver.findElement(By.xpath(xpath)).sendKeys(Keys.CONTROL, "a");
+            driver.findElement(By.xpath(xpath)).sendKeys(Keys.BACK_SPACE);
+            driver.findElement(By.xpath(xpath)).sendKeys(username);
+
+        }
+
+
+    }
 }
