@@ -38,7 +38,7 @@ public class Loaddriver {
 
         driver = new ChromeDriver();
         driver.get(URL);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         driver.manage().window().maximize();
         return driver;
     }

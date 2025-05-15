@@ -14,7 +14,7 @@ public class LoginPage {
     By passwordfeild = By.xpath("//input[@name=\"password\"]");
     By loginbutton = By.xpath("//button[text()=' Login ']");
     By userprofilename = By.xpath("//span[@class=\"oxd-userdropdown-tab\"]/p");
-    String userprofile = "Raj rai";
+    String userprofile = "Raj Rai";
     Genricutils genricutils;
 
     public LoginPage(WebDriver driver) {

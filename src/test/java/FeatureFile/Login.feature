@@ -4,7 +4,7 @@ Feature: UserLogin
   Scenario: Verify User is Login
 
     Given User Is on login Page
-    When  login to Home page
+    When  login As Admin
     Then Page Verification
     And Logout the user
 

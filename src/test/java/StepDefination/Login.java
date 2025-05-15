@@ -12,16 +12,17 @@ public class Login {
 
     public Login(Basecontext base) {
         this.base = base;
+        loginPage = base.objectfile.getLoginPage();
 
     }
 
     @Given("User Is on login Page")
     public void User_is_on_Login_Page() {
-        loginPage = base.objectfile.getLoginPage();
+
         loginPage.setGenricutils(base.genric);
     }
 
-    @When("login to Home page")
+    @When("login As Admin")
     public void Login_to_home_page() {
         loginPage.loginAsAdmin(loginPage.getUserName(), loginPage.getPassword());
     }

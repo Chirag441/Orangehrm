@@ -3,11 +3,14 @@ package PageObjects;
 import org.openqa.selenium.WebDriver;
 
 public class Objectfile {
-    public WebDriver driver;
-    public LoginPage loginPage;
-    public Homepage home;
-    public AddEmployePage addEmployePage;
-    public EmployeeListPage employeeListPage;
+     WebDriver driver;
+     LoginPage loginPage;
+    Homepage home;
+    AddEmployePage addEmployePage;
+   EmployeeListPage employeeListPage;
+   EntitlementsPage entitlementsPage;
+
+   EmployeeEntitlementsPage employeeEntitlementsPage;
 
     public Objectfile(WebDriver driver) {
         this.driver = driver;
@@ -37,6 +40,19 @@ public class Objectfile {
             employeeListPage = new EmployeeListPage(driver);
         }
         return employeeListPage;
+    }
+
+    public  EntitlementsPage getEntitlementsPage()
+    {
+        entitlementsPage =new EntitlementsPage(driver);
+
+        return entitlementsPage;
+    }
+
+    public EmployeeEntitlementsPage getEmployeeEntitlementsPage()
+    {
+        employeeEntitlementsPage = new EmployeeEntitlementsPage(driver);
+        return employeeEntitlementsPage;
     }
 
 }

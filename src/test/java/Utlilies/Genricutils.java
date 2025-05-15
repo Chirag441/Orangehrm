@@ -26,6 +26,8 @@ public class Genricutils {
     public XSSFSheet sheet;
     JavascriptExecutor js;//(JavascriptExecutor)  driver;
     WebDriverWait wait;
+    Properties prop;
+    String filepath = "//src//test//resources//employee.properties";
 
     public Objectfile objectfile;
     public int employeeid;
@@ -110,21 +112,62 @@ public class Genricutils {
         } catch (Exception e) {
             return false;
         }
+
+
+    }
+
+    public boolean waitForElementInvisibility(By xpath) {
+        try {
+            wait.until(ExpectedConditions.invisibilityOfAllElements(driver.findElement(xpath)));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 
     public byte[] getScreenshot()
     {
+
       File srcshot  =   ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         byte [] screenshot = new byte[0];
         try {
             screenshot =FileUtils.readFileToByteArray(srcshot);
-        } catch (IOException e) {
+        }
+        catch (IOException e)
+        {
             System.out.println("Unable to take screenshot");
         }
         return screenshot;
     }
 
 
+    void employeePropertyFile()
+    {
+
+        FileInputStream fis = null;
+
+        try {
+            fis = new FileInputStream(System.getProperty("user.dir") + filepath);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to find Properties File");
+        }
+        prop = new Properties();
+        try {
+            prop.load(fis);
+        } catch (IOException e) {
+            System.out.println("Unable to load Properties File");
+        }
+    }
+
+    public Properties getProperty()
+    {
+        if(prop==null)
+        {
+            employeePropertyFile();
+        }
+
+            return prop;
+    }
 
 }
