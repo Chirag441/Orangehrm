@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 import java.util.Properties;
 
 public class Genricutils {
@@ -169,5 +170,21 @@ public class Genricutils {
 
             return prop;
     }
+
+
+   public void dropdownlist(By dropdownXpath, String value)
+    {
+        waitForElementVisibility(dropdownXpath);
+       List<WebElement> ele=  driver.findElements(dropdownXpath);
+      for (WebElement options : ele)
+      {
+          if(options.getText().equalsIgnoreCase(value))
+          {
+              options.click();
+              break;
+          }
+      }
+    }
+
 
 }

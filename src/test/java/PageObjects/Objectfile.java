@@ -9,6 +9,7 @@ public class Objectfile {
     AddEmployePage addEmployePage;
    EmployeeListPage employeeListPage;
    EntitlementsPage entitlementsPage;
+   EmployeeApplyLeavePage employeeApplyLeavePage;
 
    EmployeeEntitlementsPage employeeEntitlementsPage;
 
@@ -53,6 +54,13 @@ public class Objectfile {
     {
         employeeEntitlementsPage = new EmployeeEntitlementsPage(driver);
         return employeeEntitlementsPage;
+    }
+
+    public  EmployeeApplyLeavePage getEmployeeApplyLeavePage()
+    {
+
+        employeeApplyLeavePage = new EmployeeApplyLeavePage(driver);
+        return  employeeApplyLeavePage;
     }
 
 }

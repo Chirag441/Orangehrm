@@ -14,10 +14,13 @@ public class EmployeeEntitilement {
         employeeEntitlementsPage.setGenricutils(base.genric);
     }
 
-    @And("Verify the employee Leave Details")
-    public  void verify_The_Employee_Leave_Details()
+    @And("verify the Leave count added by admin")
+    //verify the Leave count added by admin
+    public  void verify_The_Leave_Count_Added_By_Admin()
     {
         employeeEntitlementsPage.switchToEntitilement();
-        employeeEntitlementsPage.VerifyLeave();
+        employeeEntitlementsPage.VerifyCount();
     }
+
+
 }

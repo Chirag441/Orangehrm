@@ -46,6 +46,9 @@ public class LoginPage {
     }
 
     public void loginAsUser() {
+//       driver.findElement(passwordfeild).sendKeys("Chirag#1234");
+//        driver.findElement(usernamefeild).sendKeys("Rajkumar");
+
         driver.findElement(usernamefeild).sendKeys(genricutils.employeeusermane);
         driver.findElement(passwordfeild).sendKeys(genricutils.employeepassword);
         driver.findElement(loginbutton).click();

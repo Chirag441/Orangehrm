@@ -15,6 +15,7 @@ public class EmployeeEntitlementsPage {
     By myentitlements = By.xpath("//ul[@class=\"oxd-dropdown-menu\"]/li");
     By leavetype = By.xpath("//div[@class=\"oxd-table-card\"]/div/div[1]");
     By leavecount =By.xpath("//div[@class=\"oxd-table-card\"]/div/div[5]");
+    By info =By.xpath("//div[@class=\"oxd-toast-icon-container\"]");
 
     public  EmployeeEntitlementsPage(WebDriver driver)
     {
@@ -30,14 +31,14 @@ public class EmployeeEntitlementsPage {
 
     public  void switchToEntitilement()
     {
-        By xpath =By.xpath("//div[@class=\"oxd-toast-icon-container\"]");
-        genricutils.waitForElementInvisibility(xpath);
+     //   By xpath =By.xpath("//div[@class=\"oxd-toast-icon-container\"]");
+        genricutils.waitForElementInvisibility(info);
 
         driver.findElement(dropdown).click();
         driver.findElement(myentitlements).click();
     }
 
-    public void VerifyLeave()
+    public void VerifyCount()
     {
         String value1,value2;
 

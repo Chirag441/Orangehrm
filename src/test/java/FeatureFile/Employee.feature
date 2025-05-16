@@ -1,4 +1,5 @@
-Feature:  Create a new user
+Feature:  create user , Delete user , Apply Leave
+
   @chirag
   Scenario Outline: Creating a user and Deleting the user
 # user details are in exel file
@@ -12,8 +13,7 @@ Feature:  Create a new user
       |tab|
     |PIM|
 
-
-  @chirag @user
+  @chirag
   Scenario Outline: Creating a user and login with that user
 # user details are in exel file
     Given User Is on login Page
@@ -32,7 +32,7 @@ Feature:  Create a new user
 
   @chirag
   Scenario Outline: Employee Leave
-      # Adding employee leave and use the leave from employee and  verifying ir from admin end
+      # Adding employee leave and use the leave from employee end
     Given User Is on login Page
     When  login As Admin
     Then  Switch to "<tab>" tab
@@ -43,7 +43,10 @@ Feature:  Create a new user
     And Logout the user
     And Login as user
     Then  Switch to "<tab1>" tab
-    And Verify the employee Leave Details
+    And verify the Leave count added by admin
+    Then Apply for the leave
+    Then  Switch to "<tab1>" tab
+
     Examples:
       |tab||tab1|
       |PIM||Leave|

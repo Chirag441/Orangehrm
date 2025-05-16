@@ -50,15 +50,15 @@ public class EntitlementsPage {
 
       value=properties.getProperty("EmployeeName");
       driver.findElement(empName).sendKeys(value);
-      dropdownlist(leaveDropdown,value);
+      genricutils.dropdownlist(leaveDropdown,value);
 
         driver.findElement(leaveType).click();
         value=properties.getProperty("Leavetype");
-       dropdownlist(leaveDropdown,value);
+       genricutils.dropdownlist(leaveDropdown,value);
 
         driver.findElement(leavePeriod).click();
         value=properties.getProperty("LeavePreiod");
-        dropdownlist(leaveDropdown,value);
+        genricutils.dropdownlist(leaveDropdown,value);
 
         value =properties.getProperty("LeaveCount");
         driver.findElement(empLeave).sendKeys(value);
@@ -70,18 +70,18 @@ public class EntitlementsPage {
 
     }
 
-    void dropdownlist(By dropdownXpath, String value)
-    {
-        genricutils.waitForElementVisibility(dropdownXpath);
-      List<WebElement> ele=  driver.findElements(dropdownXpath);
-      for (WebElement options : ele)
-      {
-          if(options.getText().contains(value))
-          {
-              options.click();
-              break;
-          }
-      }
-    }
+//    void dropdownlist(By dropdownXpath, String value)
+//    {
+////        genricutils.waitForElementVisibility(dropdownXpath);
+//      List<WebElement> ele=  driver.findElements(dropdownXpath);
+//      for (WebElement options : ele)
+//      {
+//          if(options.getText().equalsIgnoreCase(value))
+//          {
+//              options.click();
+//              break;
+//          }
+//      }
+//    }
 
 }
